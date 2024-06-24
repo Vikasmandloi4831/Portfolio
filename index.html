@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Personal portfolio</title>
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="namelogo.jpg" alt="" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#Home">Home</a></li>
+                    <li><a href="#about">About us</a></li>
+
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times nav-ico" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars nav-ico" onclick="openmenu()"></i>
+            </nav>
+            <!--
+            text box start
+        -->
+            <div class="header-text">
+                <p>Web Developer</p>
+                <h1>Hi, I'm <span> Vikas </span> <br> Mandloi From Dhar</h1>
+            </div>
+        </div>
+    </div>
+    <!--About Page-->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="imgmod.jpg" alt="">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="subtitle">About me</h1>
+                    <p>
+                        I am Vikas Mandloi Currently Pusrsuing B.Tech Computer Science from Sage University Indore.
+                        I am Intrested to working in the field of Web Development and Frontend Development. Now i am
+                        Searching for an a internhip related to my field for growing up and set my futer at the next
+                        Level.
+                    </p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links " onclick="opentab('education')"> Education</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    </div>
+
+                    <div class="tab-contents active-tab " id="skills">
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+
+                            <li>JavaScript</li>
+
+                            <li>C++</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents school" id="education">
+                        <ul>
+                            <li>
+                                <h3>School</h3><br> patidar high secondary school dhar
+                            </li>
+                            <li><span>10th (2018)</span><br>86% (M.P.bord)</li>
+                            </li>
+                            <li><span>12th (2020)</span><br>76% (M.P.bord)</li>
+                            </li>
+
+                            <li><span>Collage 2021 - present</span><br>Sage University Indore</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>1jun-30june </span><br> web Developer at CODSOFT                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--about close-->
+    <div>
+        <div class="container" id="contact">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fa-solid fa-paper-plane fa-xs"></i>vikasmandloimarch@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>+91 6265818617</p>
+                    <div class="social-icon">
+                        <a href="https://www.facebook.com/abhay.suneriya?mibextid=ZbWKwL" target="_blank"
+                            rel="noopener"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/abhay-suneriya-9a1137237/" target="_blank"
+                            rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/AbhaySuneriya" target="_blank" rel="noopener"><i
+                                class="fa-brands fa-github"></i></a>
+                        <a href="https://www.instagram.com/accounts/onetap/?next=%2F&hl=en" target="_blank"
+                            rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                    <a href="Vikas Mandloi Resume.pdf" download="" class="btn btn2">Download MY RESUME</a>
+                </div>
+                <div class="contact-right">
+                    <form action="" name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" id="" rows="6" placeholder="Your Me"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © Vikas. <i class="fa-solid fa-heart"></i> Made in 2024</p>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzYx6N5EKyvTPzhuAOpwrJJWAt09BPpXyG7rvSN_6URn_AdNtFV5NiJ-U_NHstjJmAS/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    msg.innerHTML = "Message sent Successfully...!"
+                    setTimeout(function(){
+                        msg.innerHTML = ""
+                    },5000)
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+
+</html>
